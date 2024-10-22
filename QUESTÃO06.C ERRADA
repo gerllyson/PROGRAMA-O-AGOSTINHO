@@ -1,1 +1,17 @@
+#include <stdio.h>
+
+void funcao(char **p) {
+    char *t;
+    // `p += sizeof(int)` move o ponteiro `p` para a frente em `sizeof(int)` bytes
+    // Como `p` é um ponteiro para ponteiro de char, o incremento é calculado com base no tamanho de um ponteiro
+    t = (p += sizeof(int))[-1];  // Ajusta `p` e depois acessa o valor de `p[-1]`
+    printf("%s\n", t);  // Imprime a string apontada por `t`
+}
+
+int main() {
+    // `a` é um array de ponteiros de char, contendo strings
+    char *a[] = { "ab", "cd", "ef", "gh", "ij", "kl"};
+    funcao(a);
+    return 0;
+}
 
